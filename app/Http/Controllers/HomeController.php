@@ -9,15 +9,20 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $all = Author::with('book')->get();
-        // dd($all->toArray());
-        foreach($all as $item){
-            echo $item->name. '<br>';
-            foreach($item->book as $item2){
-                echo $item2->title. '<br>';
-        }
-        echo '<br>';
-    }
+    //     $all = Author::with('book')->get();
+    //     // dd($all->toArray());
+    //     foreach($all as $item){
+    //         echo $item->name. '<br>';
+    //         foreach($item->book as $item2){
+    //             echo $item2->title. '<br>';
+    //     }
+    //     echo '<br>';
+    // }
 
+    $single = Author::with('book')->where('id',1)->first();
+    echo $single->name.'<br>';
+    foreach($single->book as $item){
+        echo $item->title . '<br>';
     }
+}
 }
