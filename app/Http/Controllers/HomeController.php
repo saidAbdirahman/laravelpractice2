@@ -26,15 +26,18 @@ class HomeController extends Controller
     //     echo $item->title . '<br>';
     // }
 
-    $all =  Book::with('author')->get();
-    // dd($all->toArray());
-    foreach($all as $item){
-        echo $item->title. '<br>';
-    foreach($item->author as $item){
-        echo $item->name. '<br>';
+//     $all =  Book::with('author')->get();
+//     // dd($all->toArray());
+//     foreach($all as $item){
+//         echo $item->title. '<br>';
+//     foreach($item->author as $item){
+//         echo $item->name. '<br>';
+//     }
+//     echo '<br>';
+// }
+$single = Book::with('author')->where('id',1)->first();
+    echo $single->title.'<br>';
+    foreach($single->author as $item)
+        echo $item->name . '<br>';
     }
-    echo '<br>';
-}
-
-}
 }
